@@ -1,0 +1,40 @@
+// Lox Tree Generator (String Concatenation Test)
+
+fun makeChars(char, count) {
+  var result = "";
+  var i = 0;
+  while (i < count) {
+    result = result + char;
+    i = i + 1;
+  }
+  return result;
+}
+
+fun drawTree(height) {
+  print "--- Testing clox Output ---";
+  
+  // Draw foliage
+  var i = 0;
+  while (i < height) {
+    var spaces = height - i - 1;
+    var stars = (i * 2) + 1;
+    
+    print makeChars(" ", spaces) + makeChars("*", stars);
+    i = i + 1;
+  }
+  
+  // Draw trunk
+  var trunkHeight = 2;
+  var trunkWidth = 3;
+  var trunkSpaces = height - 2;
+  
+  var t = 0;
+  while (t < trunkHeight) {
+    print makeChars(" ", trunkSpaces) + makeChars("|", trunkWidth);
+    t = t + 1;
+  }
+  
+  print "---------------------------";
+}
+
+drawTree(8);

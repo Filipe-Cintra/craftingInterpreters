@@ -1,0 +1,41 @@
+// Helper to perform integer division (truncating decimals)
+fun floorDiv(a, b) {
+  var quotient = a / b;
+  var rem = quotient;
+  while (rem >= 1) {
+    rem = rem - 1;
+  }
+  return quotient - rem;
+}
+
+// Simulates a % b == 0
+fun isMultiple(a, b) {
+  var div = floorDiv(a, b);
+  return (a - (div * b)) == 0;
+}
+
+fun generatePattern(rows, cols) {
+  print "=== ASCII Wave Pattern ===";
+  var r = 0;
+  while (r < rows) {
+    var line = "";
+    var c = 0;
+    while (c < cols) {
+      var sum = r + c;
+      var prod = r * c;
+      
+      if (isMultiple(sum, 2)) {
+        line = line + "#";
+      } else if (isMultiple(prod, 3)) {
+        line = line + "O";
+      } else {
+        line = line + ".";
+      }
+      c = c + 1;
+    }
+    print line;
+    r = r + 1;
+  }
+}
+
+generatePattern(10, 25);

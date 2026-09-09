@@ -1,0 +1,33 @@
+var secret = 42;
+var low = 1;
+var high = 100;
+var attempts = 0;
+
+print "--- Starting Guessing Game Simulator ---";
+
+while (low <= high) {
+  attempts = attempts + 1;
+  var guess = low + (high - low) / 2;
+  
+  // Truncate decimal from floating-point division
+  var rem = guess;
+  while (rem >= 1) {
+    rem = rem - 1;
+  }
+  guess = guess - rem;
+
+  print "Guessing:";
+  print guess;
+  
+  if (guess == secret) {
+    print "Bingo! Found secret number in attempts:";
+    print attempts;
+    low = high + 1; // Exit loop
+  } else if (guess < secret) {
+    print "Too low!";
+    low = guess + 1;
+  } else {
+    print "Too high!";
+    high = guess - 1;
+  }
+}
